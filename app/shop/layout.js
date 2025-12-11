@@ -1,3 +1,5 @@
+import Providers from "../Providers";
+
 export default function ShopLayout({ children }) {
   return (
     <html lang="es">
@@ -8,7 +10,7 @@ export default function ShopLayout({ children }) {
           <a href="/shop" style={{ marginRight: 20 }}>Productos</a>
           <a href="/shop/cart">Carrito</a>
         </nav>
-
+      
         {children}
       </body>
     </html>

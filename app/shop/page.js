@@ -1,8 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { createContext, useState } from "react";
 import ProductList from "./components/ProductList";
 import Cart from "./components/Cart";
+
+
 
 export default function ShopPage() {
   const [cart, setCart] = useState([]);
@@ -17,6 +19,9 @@ export default function ShopPage() {
 
       <h2 style={{ marginTop: 30 }}>Carrito rápido</h2>
       <Cart cart={cart} />
-    </div>
+   </div>
+  //<CartContext.Provider value={{ cart, addToCart }}>
+    //  {children}
+   // </CartContext.Provider>
   );
 }
