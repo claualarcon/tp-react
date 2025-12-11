@@ -1,17 +1,19 @@
-import ProductCard from "./ProductCard";
-import { DB } from "../data/db";
-import { useEffect, useState } from "react";
+"use client";
 
-export default function ProductList({ onAddToCart }) {
-  
-  let [products, setProducts] = useState([]);
-  let [loading, setLoading] = useState(true);
+import ProductCard from "./ProductCard";
+import { useEffect, useState } from "react";
+import { Product } from "../interfaces/Products";
+
+export default function ProductList() {
+
+  const [products, setProducts] = useState<Product[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     async function loadProducts() {
       try {
-        let res = await fetch("https://fakestoreapi.com/products");
-        let data = await res.json();
+        const res = await fetch("https://fakestoreapi.com/products");
+        const data = await res.json();
         setProducts(data);
       } catch (err) {
         console.error("Error al cargar productos:", err);
@@ -27,17 +29,17 @@ export default function ProductList({ onAddToCart }) {
 
   return (
     <div>
-      <h2>Productos Disponibles</h2>
+      <h2 className="text-2xl font-bold">Productos Disponibles</h2>
 
-      <div style={{ display: "flex", flexWrap: "wrap", gap: "20px" }}>
+      <div className="flex flex-wrap gap-4">
         {products.map((item) => (
           <ProductCard
             key={item.id}
             product={item}
-            onAddToCart={onAddToCart}
           />
         ))}
       </div>
     </div>
   );
 }
+

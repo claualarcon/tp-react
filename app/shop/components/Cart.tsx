@@ -1,4 +1,11 @@
-export default function Cart({ cart }) {
+"use client";
+
+import { useCart } from "../../hooks/useCart";
+import { Product } from "../interfaces/Products";
+
+export default function Cart() {
+  const { cart }= useCart();
+ 
   return (
     <div>
       <h3>Carrito</h3>
@@ -20,3 +27,4 @@ export default function Cart({ cart }) {
     </div>
   );
 }
+

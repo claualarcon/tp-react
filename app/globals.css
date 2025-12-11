@@ -24,3 +24,18 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+@layer components {
+  .product-card {
+    @apply w-60 h-full p-4 border border-gray-300 rounded-md bg-white text-black;
+  }
+  .product-title {
+    @apply text-lg text-center font-black ;
+  }
+  .product-description{
+    @apply text-sm text-gray-500;
+  } 
+  .image-container {
+    @apply w-full h-40 rounded-md object-contain;
+  }
+}
