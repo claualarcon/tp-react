@@ -4,7 +4,7 @@ export default function ShopLayout({ children }) {
       <h1>🛍 Carrito React / Next.js</h1>
 
       <nav style={{ marginBottom: "20px" }}>
-        <a href="/">Inicio</a> | <a href="/shop">Carrito</a>
+        <a href="/shop">Inicio</a> | <a href="/shop/cart">Carrito</a>
       </nav>
 
       {children}
