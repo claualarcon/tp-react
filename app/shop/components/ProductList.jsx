@@ -1,9 +1,10 @@
+"use client";
+
 import ProductCard from "./ProductCard";
-import { DB } from "../data/db";
 import { useEffect, useState } from "react";
 
-export default function ProductList({ onAddToCart }) {
-  
+export default function ProductList() {
+
   let [products, setProducts] = useState([]);
   let [loading, setLoading] = useState(true);
 
@@ -34,7 +35,6 @@ export default function ProductList({ onAddToCart }) {
           <ProductCard
             key={item.id}
             product={item}
-            onAddToCart={onAddToCart}
           />
         ))}
       </div>
