@@ -1,43 +1,19 @@
 "use client";
 
+import { useFetch } from "../../hooks/useFetch";
 import ProductCard from "./ProductCard";
-import { useEffect, useState } from "react";
 
-export default function ProductList() {
+export default function ProductList({ url }) {
+  const { data: products, loading, error } = useFetch(url);
 
-  let [products, setProducts] = useState([]);
-  let [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    async function loadProducts() {
-      try {
-        let res = await fetch("https://fakestoreapi.com/products");
-        let data = await res.json();
-        setProducts(data);
-      } catch (err) {
-        console.error("Error al cargar productos:", err);
-      } finally {
-        setLoading(false);
-      }
-    }
-
-    loadProducts();
-  }, []);
-
-  if (loading) return <p>Cargando...</p>;
+  if (loading) return <p>Cargando productos...</p>;
+  if (error) return <p>Error: {error}</p>;
 
   return (
-    <div>
-      <h2>Productos Disponibles</h2>
-
-      <div style={{ display: "flex", flexWrap: "wrap", gap: "20px" }}>
-        {products.map((item) => (
-          <ProductCard
-            key={item.id}
-            product={item}
-          />
-        ))}
-      </div>
+    <div style={{ display: "flex", gap: 16, flexWrap: "wrap" }}>
+      {products.map((p) => (
+        <ProductCard key={p.id} product={p} />
+      ))}
     </div>
   );
 }

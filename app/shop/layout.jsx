@@ -1,13 +1,17 @@
+import { CartProvider } from "../context/CartContext.jsx";
+import Navbar from "./Navbar";
+
 export default function ShopLayout({ children }) {
   return (
-    <div style={{ fontFamily: "Arial", padding: "20px" }}>
-      <h1>🛍 Carrito React / Next.js</h1>
+    <CartProvider>
+      <main style={{ padding: "20px" }}>
+        <header style={{ marginBottom: 24 }}>
+          <h1>🛍 Carrito React / Next.js</h1>
+          <Navbar />
+        </header>
 
-      <nav style={{ marginBottom: "20px" }}>
-        <a href="/shop">Inicio</a> | <a href="/shop/cart">Carrito</a>
-      </nav>
-
-      {children}
-    </div>
+        {children}
+      </main>
+    </CartProvider>
   );
 }
