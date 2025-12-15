@@ -18,7 +18,10 @@ export default function Cart() {
       ))}
 
       {cart.length > 0 && (
-        <p>Total: ${cart.reduce((acc, p) => acc + p.price, 0)}</p>
+        <p>
+          Total: $
+          {cart.reduce((acc, p) => acc + p.price * p.quantity, 0)}
+        </p>
       )}
     </div>
   );
